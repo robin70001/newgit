@@ -8,13 +8,21 @@ library(tidytext)
 library(ProjectTemplate)
 library(DT)
 
+install.packages("ascii")
+library(ascii)
+
 weights <- c(24.28, 5.71, 15.00,9.28,  0.71, 39.28,  3.57, 2.14)
 depression <- data_frame(user = character(), line = character(), score = numeric())
-merged <- read.csv(file = '../data/merged.csv', header = TRUE,fileEncoding="latin1")
+#merged <- read.csv(file = '../data/merged.csv', header = TRUE,fileEncoding="latin1")
+
+abc <- read.csv(file = 'merged.csv')
+abc1 <- ascii(abc)
+merged <- abc1$x
 
 #Selecting users into a list
 users <- merged$Name %>% unique()
-usr_length <- length(users)
+#usr_length <- length(users)
+usr_length <- 5
 
 for (i in 1:usr_length) {
   #filtering data based on users
